@@ -1,5 +1,7 @@
 import { closeRequest, donate } from "@/services/Web3Service";
-import { generateAvatarURL } from "@cfx-kit/wallet-avatar"
+import { generateAvatarURL } from "@cfx-kit/wallet-avatar";
+import { formatDistance } from "date-fns";
+import prBR from "date-fns/locale/pt-BR";
 import Web3 from "web3"
 
 export default function Request ({ data }) {
@@ -70,6 +72,9 @@ export default function Request ({ data }) {
                     : `BNB: ${Web3.utils.fromWei(data.goal, "ether")}`
                   }
                 </span>
+              </div>
+              <div className="col text-end">
+                <small className="opacity-50 text-nowrap">Criado {formatDistance(new Date(Number(data.timestamp) * 1000), new Date(), { addSuffix: true, locale: ptBR })}</small>
               </div>
             </div>
           </div>

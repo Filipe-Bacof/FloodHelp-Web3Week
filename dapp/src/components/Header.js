@@ -1,6 +1,7 @@
 "use client"
 
 import { doLogin } from "@/services/Web3Service"
+import { generateAvatarURL } from "@cfx-kit/wallet-avatar"
 import { useState, useEffect } from "react"
 
 export default function Header () {
@@ -17,6 +18,11 @@ export default function Header () {
     })
   }
 
+  function btnLogoutClick () {
+    localStorage.removeItem("wallet");
+    window.location.reload();
+  }
+
   return (
     <header className="p-3 text-bg-dark">
       <div className="container">
@@ -26,7 +32,17 @@ export default function Header () {
           </a>
           <div className="text-end col-9">
             {wallet ? (
-              <a href="/create" className="btn btn-warning">Pedir Ajuda</a>
+              <>
+                <button
+                  type="button"
+                  className="btn btn-outline-light me-2"
+                  onClick={btnLogoutClick}
+                >
+                  <img src={generateAvatarURL(wallet)} alt="wallet picture" width={20} height={20} className="rounded-circle me-2" />
+                  {"0x..." + wallet.substring(37)}
+                </button>
+                <a href="/create" className="btn btn-warning">Pedir Ajuda</a>
+              </>
             ) : (
               <button type="button" className="btn btn-outline-light me-2" onClick={btnLoginClick}>
               <img src="/metamask.svg" alt="" width="24" className="me-3" />
