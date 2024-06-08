@@ -18,7 +18,7 @@
 
 - Aula 1 (03/06/2024): **SMARTCONTRACT**
 - Aula 2 (05/06/2024): **BLOCKCHAIN**
-- Aula 3 (07/06/2024): ...
+- Aula 3 (07/06/2024): **JAVASCRIPT**
 
 ## Desafios Extras
 
